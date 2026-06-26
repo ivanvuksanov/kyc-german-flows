@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KYC Verification — German Entities</title>
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --surface:#ffffff;
+    --ink:#13141c;
+    --ink-2:#4b4d5e;
+    --ink-3:#83869a;
+    --line:#e7e8f0;
+    --accent:#4f46e5;
+    --accent-soft:#eef0ff;
+    --de:#0f766e;            /* German-customization callout */
+    --de-soft:#e7f6f3;
+    --ai:#7c3aed;            /* AI-check callout */
+    --ai-soft:#f3ecff;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(20,20,40,.04), 0 12px 32px rgba(20,20,40,.08);
+    --maxw:1280px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.55;
+  }
+  a{color:var(--accent);text-decoration:none}
+
+  /* ---------- Header ---------- */
+  header.top{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);
+  }
+  .top-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.2px;font-size:15px}
+  .brand .dot{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    display:grid;place-items:center;color:#fff;font-size:13px}
+  .tabs{display:flex;gap:8px;margin-left:auto}
+  .tab{
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+    padding:8px 16px;border-radius:999px;font-size:13.5px;font-weight:600;cursor:pointer;
+    transition:.15s;white-space:nowrap;
+  }
+  .tab:hover{border-color:#c9cbe0;color:var(--ink)}
+  .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tabs.hidden{display:none}
+
+  /* ---------- Chooser ---------- */
+  .chooser{max-width:var(--maxw);margin:0 auto;padding:72px 24px 40px}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3)}
+  .chooser h1{font-size:42px;line-height:1.08;letter-spacing:-1px;margin:14px 0 14px;max-width:18ch}
+  .chooser .lede{font-size:18px;color:var(--ink-2);max-width:62ch;margin:0 0 44px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 30px 26px;cursor:pointer;transition:.18s;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .card:hover{transform:translateY(-3px);border-color:#c9cbe0}
+  .card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);padding:5px 11px;border-radius:999px;margin-bottom:16px}
+  .card h2{font-size:24px;letter-spacing:-.4px;margin:0 0 10px}
+  .card p{color:var(--ink-2);font-size:15px;margin:0 0 20px}
+  .card .meta{display:flex;gap:18px;font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
+  .card .meta b{color:var(--ink);font-weight:700}
+  .card .go{position:absolute;right:26px;bottom:24px;color:var(--accent);font-weight:700;font-size:14px}
+
+  /* ---------- Flow view ---------- */
+  .flow{display:none;max-width:var(--maxw);margin:0 auto;padding:0 24px 100px}
+  .flow.active{display:block}
+  .flow-intro{padding:60px 0 30px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .flow-intro h1{font-size:34px;letter-spacing:-.6px;margin:12px 0 14px}
+  .flow-intro p{font-size:17px;color:var(--ink-2);max-width:70ch;margin:0}
+  .backlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;
+    color:var(--ink-3);cursor:pointer;margin-top:18px}
+  .backlink:hover{color:var(--ink)}
+
+  .layout{display:grid;grid-template-columns:1fr 200px;gap:44px;align-items:start}
+  .steps{min-width:0}
+
+  /* step row: image left (bigger), copy right */
+  .step{display:grid;grid-template-columns:1.85fr 1fr;gap:38px;align-items:start;
+    padding:48px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+  .step:last-child{border-bottom:none}
+  .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;
+    box-shadow:var(--shadow);position:sticky;top:88px;cursor:zoom-in;
+    transition:box-shadow .18s, transform .18s}
+  .shot:hover{box-shadow:0 2px 4px rgba(20,20,40,.06), 0 20px 44px rgba(20,20,40,.16)}
+  .shot img{display:block;width:100%;height:auto}
+  .shot .zoom-hint{position:absolute;right:10px;bottom:10px;display:flex;align-items:center;gap:6px;
+    background:rgba(19,20,28,.78);color:#fff;font-size:11.5px;font-weight:600;letter-spacing:.2px;
+    padding:6px 10px;border-radius:999px;opacity:0;transition:opacity .18s;pointer-events:none}
+  .shot:hover .zoom-hint{opacity:1}
+  .shot--hinted .zoom-hint{opacity:1}
+  .copy{padding-top:4px}
+  .step-num{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3)}
+  .copy h3{font-size:22px;letter-spacing:-.4px;margin:8px 0 12px;line-height:1.2}
+  .copy p{color:var(--ink-2);font-size:15.5px;margin:0 0 14px}
+  .copy .de-term{font-style:italic;color:var(--ink);font-weight:600}
+
+  .callout{border-radius:11px;padding:13px 15px;font-size:14px;margin:14px 0 0;border:1px solid}
+  .callout .lab{display:block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:5px}
+  .callout p{margin:0;font-size:14px}
+  .callout--de{background:var(--de-soft);border-color:#bfe3dd;color:#0c4a44}
+  .callout--de .lab{color:var(--de)}
+  .callout--ai{background:var(--ai-soft);border-color:#ddc9ff;color:#4a1d96}
+  .callout--ai .lab{color:var(--ai)}
+  .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;margin-bottom:10px}
+  .badge--key{background:#fff1f1;color:#c0233a;border:1px solid #f5c2c9}
+
+  /* step nav */
+  .stepnav{position:sticky;top:88px;font-size:13px}
+  .stepnav .nav-title{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:12px;padding-left:14px}
+  .stepnav ul{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+  .stepnav li{margin:0}
+  .stepnav a{display:block;color:var(--ink-3);padding:7px 0 7px 14px;margin-left:-2px;
+    border-left:2px solid transparent;transition:.15s;line-height:1.35}
+  .stepnav a:hover{color:var(--ink)}
+  .stepnav a.current{color:var(--ink);font-weight:600;border-left-color:var(--accent)}
+  .stepnav a .k{color:var(--accent);font-weight:700;font-size:10px;margin-left:6px;letter-spacing:.3px}
+
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 24px 60px;color:var(--ink-3);font-size:13px;
+    border-top:1px solid var(--line)}
+  footer a{color:var(--ink-3);text-decoration:underline}
+
+  /* ---------- Lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(12,12,20,.92);
+    display:none;flex-direction:column;padding:24px;backdrop-filter:blur(4px)}
+  .lb.open{display:flex}
+  .lb-top{display:flex;align-items:center;justify-content:space-between;color:#cfd0dc;
+    font-size:12.5px;font-weight:600;letter-spacing:.4px}
+  .lb-count{text-transform:uppercase;letter-spacing:.8px}
+  .lb-close{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;
+    width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1;display:grid;place-items:center}
+  .lb-close:hover{background:rgba(255,255,255,.16)}
+  .lb-stage{flex:1;display:flex;align-items:center;justify-content:center;gap:18px;min-height:0;padding:18px 0}
+  .lb-img{max-width:min(1500px,calc(100vw - 180px));max-height:74vh;border-radius:12px;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08);background:#fff}
+  .lb-nav{flex:0 0 auto;width:50px;height:50px;border-radius:50%;cursor:pointer;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:22px;
+    display:grid;place-items:center;transition:.15s;user-select:none}
+  .lb-nav:hover{background:rgba(255,255,255,.22)}
+  .lb-cap{text-align:center;color:#fff;max-width:760px;margin:0 auto;padding:6px 0 4px}
+  .lb-cap h4{font-size:21px;letter-spacing:-.3px;margin:0 0 8px;font-weight:700}
+  .lb-cap p{font-size:15px;line-height:1.55;color:#c8c9d6;margin:0}
+  .lb-cap .step-num{color:#9a9cb0}
+  @media (max-width:760px){
+    .lb-img{max-width:calc(100vw - 90px);max-height:60vh}
+    .lb-nav{width:40px;height:40px;font-size:18px}
+  }
+
+  @media (max-width:920px){
+    .cards{grid-template-columns:1fr}
+    .layout{grid-template-columns:1fr}
+    .stepnav{display:none}
+    .step{grid-template-columns:1fr;gap:20px}
+    .shot{position:static}
+    .chooser h1{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand"><span class="dot">V</span> KYC Verification · German entities</div>
+    <div class="tabs hidden" id="tabs">
+      <button class="tab" data-flow="soletrader">Sole trader / freelancer</button>
+      <button class="tab" data-flow="business">German business</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CHOOSER ============ -->
+<section class="chooser" id="chooser">
+  <div class="eyebrow">Vicoland × MangoPay onboarding</div>
+  <h1>Two KYC flows, tailored to the German legal entity.</h1>
+  <p class="lede">Before a partner can receive payouts on Vicoland, MangoPay — the EU-licensed payment institution behind the platform — needs to verify their identity. These two walkthroughs show how the verification wizard is customised for German entities, and how the AI document checks catch problems before submission. Pick a flow to begin.</p>
+  <div class="cards">
+    <div class="card" data-flow="soletrader">
+      <span class="tag">Individual</span>
+      <h2>German sole trader / freelancer</h2>
+      <p>A German freelancer (Einzelunternehmer). A lighter flow — ID plus proof of registration — with the AI-check consent step and the document-mismatch detection shown end to end.</p>
+      <div class="meta"><span><b>7</b> steps</span><span><b>AI consent</b> + checks</span><span><b>Guided</b> fixes</span></div>
+      <span class="go">View flow →</span>
+    </div>
+    <div class="card" data-flow="business">
+      <span class="tag">Company</span>
+      <h2>German business</h2>
+      <p>A German company (GmbH / registered business) and its legal representative. The fuller flow — register extracts, articles of association, and beneficial-owner declarations.</p>
+      <div class="meta"><span><b>10</b> steps</span><span><b>2</b> German documents</span><span><b>AI</b> document checks</span></div>
+      <span class="go">View flow →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW: BUSINESS ============ -->
+<section class="flow" id="flow-business" data-flow="business">
+  <div class="flow-intro">
+    <div class="eyebrow">Flow 2 · Company</div>
+    <h1>KYC for a German business</h1>
+    <p>The wizard routes a company through exactly the documents German company law requires — asking for each by its real German name, linking to the official register portal, and running an AI check on every uploaded document so mismatches are caught while the user can still fix them, not after a multi-day MangoPay rejection.</p>
+    <div class="backlink" data-back>← Choose a different flow</div>
+  </div>
+  <div class="layout">
+    <div class="steps" id="steps-business"></div>
+    <nav class="stepnav"><div class="nav-title">Steps</div><ul id="nav-business"></ul></nav>
+  </div>
+</section>
+
+<!-- ============ FLOW: SOLE TRADER ============ -->
+<section class="flow" id="flow-soletrader" data-flow="soletrader">
+  <div class="flow-intro">
+    <div class="eyebrow">Flow 1 · Individual</div>
+    <h1>KYC for a German sole trader / freelancer</h1>
+    <p>MangoPay asks less of a sole trader, so the flow is shorter — but proof of registration is genuinely hard for German freelancers to identify. This flow names every acceptable German document, gets explicit consent before the AI check runs, and routes the user straight to the field at fault when something doesn't match.</p>
+    <div class="backlink" data-back>← Choose a different flow</div>
+  </div>
+  <div class="layout">
+    <div class="steps" id="steps-soletrader"></div>
+    <nav class="stepnav"><div class="nav-title">Steps</div><ul id="nav-soletrader"></ul></nav>
+  </div>
+</section>
+
+<footer>
+  Built from two Loom walkthroughs · screens are real captures from <code>app.vicoland.com</code> account verification.
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-top">
+    <span class="lb-count" id="lb-count"></span>
+    <button class="lb-close" id="lb-close" aria-label="Close (Esc)">&times;</button>
+  </div>
+  <div class="lb-stage">
+    <div class="lb-nav" id="lb-prev" aria-label="Previous">&lsaquo;</div>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <div class="lb-nav" id="lb-next" aria-label="Next">&rsaquo;</div>
+  </div>
+  <div class="lb-cap">
+    <div class="step-num" id="lb-step"></div>
+    <h4 id="lb-title"></h4>
+    <p id="lb-text"></p>
+  </div>
+</div>
+
+<script>
+const FLOWS = {
+  business: {
+    navLabel: "German business",
+    steps: [
+      {
+        img:"stills/business/01-verification-type.png",
+        nav:"Verification type & terms",
+        title:"Pick the entity type & accept the terms",
+        body:"The wizard opens by asking what is being verified — Natural person, Business, or Sole trader. Choosing <b>Business</b> loads the company-specific path. The user accepts MangoPay's Terms &amp; Conditions: MangoPay is the EU-licensed institution that actually holds and moves the funds."
+      },
+      {
+        img:"stills/business/02-legal-rep-personal.png",
+        nav:"Legal representative",
+        title:"Legal representative — personal information",
+        body:"Captures the person legally authorised to represent the company: name, date of birth, nationality, country of residency. These are the details that must later <b>match the company register extract</b> exactly, or <b>the AI check will flag them</b>."
+      },
+      {
+        img:"stills/business/03-identity-proof.png",
+        nav:"Identity proof",
+        title:"Representative's identity proof",
+        body:"Upload of the representative's government ID, front and back, with inline good-vs-bad photo guidance (readable, no glare, in colour, not expired).",
+        value:"Showing the acceptance rules at the point of upload means the ID passes first time instead of bouncing back from review."
+      },
+      {
+        img:"stills/business/04-handelsregisterauszug.png",
+        nav:"Handelsregisterauszug",
+        title:"Aktueller Handelsregisterauszug",
+        body:"The company's current commercial-register extract — asked for by its exact German name rather than a generic “company registration”.",
+        de:"Requested as <span class='de-term'>„Aktueller Abdruck“ from the Unternehmensregister</span>, with a direct link to that portal, and the rules that actually apply in Germany spelled out: the extract <b>can’t be older than 3 months</b>, and representative + company details <b>must match</b> what was entered.",
+        deValue:"Removes the single biggest source of KYC rejection — wrong, stale, or foreign-named documents — by telling the German user precisely which file to fetch and from where."
+      },
+      {
+        img:"stills/business/05-ai-checking.png",
+        nav:"AI auto-check",
+        title:"AI checks the document automatically",
+        body:"On upload, the document is read → analysed → verified by AI in a few seconds, before the user can move on.",
+        ai:"The AI check runs on every uploaded document. (The opt-in consent prompt that gates it is shown explicitly in the sole-trader flow; here the user had already consented earlier in the session.)"
+      },
+      {
+        img:"stills/business/06-ai-issues-found.png",
+        nav:"AI document review",
+        title:"AI document review",
+        body:"The AI compared the uploaded register extract against the data entered and surfaced every mismatch — registration proof, company name, company number, address country, representative names — each shown as <b>“in the document” vs “you provided”</b>. The user can <b>Fix the issues</b> or <b>Ignore and proceed</b>.",
+        ai:"Errors are caught at the source, while the user can still act on them — not days later in a MangoPay rejection. The user keeps control: proceeding anyway is always an option."
+      },
+      {
+        img:"stills/business/07-gesellschaftsvertrag.png",
+        nav:"Gesellschaftsvertrag",
+        title:"Gesellschaftsvertrag (articles of association)",
+        body:"The second company document, again asked for by its German legal name.",
+        de:"<span class='de-term'>Gesellschaftsvertrag</span> with the same portal link and the same “must match / not older than 3 months” rules — and <b>the same AI check runs on upload</b>.",
+      },
+      {
+        img:"stills/business/08-beneficial-owners.png",
+        nav:"Beneficial owners",
+        title:"Company's beneficial owners",
+        body:"A form to declare every person who owns <b>more than 25%</b> of the company — full personal, address, and ownership-percentage details. This is the UBO (ultimate beneficial owner) data MangoPay is legally required to collect."
+      },
+      {
+        img:"stills/business/09-owners-declaration.png",
+        nav:"Owners declaration",
+        title:"Beneficial owners declaration",
+        body:"MangoPay requires the UBO declaration as a <b>separate signed document</b>. The platform <b>auto-pre-fills the declaration PDF</b> from the data already entered; the user just downloads it, signs it (digitally or by hand), and re-uploads it.",
+        ai:"The re-uploaded declaration is also checked by AI on upload — it verifies that the <b>required fields are filled in correctly</b> and that the <b>signature is present</b> (and that the owner details match what was entered). The result isn't surfaced as its own screen here, but it runs the same way as the register-extract review shown earlier.",
+        value:"No retyping and no figuring out how to produce a compliant declaration — the document arrives pre-built, the user only has to sign."
+      },
+      {
+        img:"stills/business/10-review-submit.png",
+        nav:"Review & submit",
+        title:"Review and submit to MangoPay",
+        body:"A final review of everything entered before submission. Once submitted, the data is locked while MangoPay runs verification — so this screen is the last chance to correct anything."
+      }
+    ]
+  },
+  soletrader: {
+    navLabel:"Sole trader / freelancer",
+    steps:[
+      {
+        img:"stills/soletrader/01-verification-type.png",
+        nav:"Pick “Sole trader”",
+        title:"Pick the entity type — Sole trader",
+        body:"The same entry point as the business flow. Choosing <b>Sole trader</b> loads the lighter freelancer path: ID plus proof of registration only."
+      },
+      {
+        img:"stills/soletrader/02-proof-of-registration.png",
+        nav:"Proof of registration",
+        title:"Proof of registration",
+        body:"Proof of registration is the hard part for German freelancers — there is no single obvious document.",
+        de:"The step <b>names every acceptable German document on screen</b> (listed in their original German names), and states the “not older than 3 months” rule.",
+        deValue:"Turns a confusing requirement into a checklist the freelancer can actually recognise, cutting the back-and-forth that used to stall these verifications."
+      },
+      {
+        img:"stills/soletrader/03-ai-consent.png",
+        nav:"AI-check consent",
+        title:"Consent to the AI document check",
+        body:"Before any AI runs, the user is asked to opt in: <b>“Speed up the verification with an instant AI check for your documents.”</b> They can <b>Pre-check now</b> or <b>Skip pre-check</b>.",
+        ai:"Consent-first and transparent: the notice states the document is sent to and analysed by Google’s Gemini API and isn’t used for anything else. AI checking is offered as an opt-in convenience, never forced."
+      },
+      {
+        img:"stills/soletrader/04-ai-checking.png",
+        nav:"AI auto-check",
+        title:"AI checks the document",
+        body:"After consent, the document is read → analysed → verified in a few seconds.",
+        ai:"The same auto-check engine as the business flow, running here on the freelancer’s proof-of-registration document."
+      },
+      {
+        img:"stills/soletrader/05-ai-issues-found.png",
+        nav:"AI document review",
+        title:"AI document review",
+        body:"The AI flagged concrete, document-specific problems: the registration proof is <b>older than the allowed 3 months</b>, and the representative name in the uploaded document <b>doesn’t match</b> the name that was entered. Fix the issues or Ignore and proceed.",
+        ai:"This is the screen that matters: the AI returns specific, actionable reasons — a date rule and a name mismatch — so the user knows exactly what to correct."
+      },
+      {
+        img:"stills/soletrader/06-fix-issues.png",
+        nav:"Guided fix",
+        title:"Fix the issues — routed to the exact field",
+        body:"Choosing <b>Fix the issues</b> drops the user straight onto the field at fault — here, Personal information — with the AI’s finding shown inline: <i>“Representative names does not match one from uploaded document.”</i> They correct it and continue.",
+        value:"The AI doesn’t just reject — it routes the user to the precise thing to change, so remediation is a single obvious edit instead of a hunt."
+      },
+      {
+        img:"stills/soletrader/07-review-submit.png",
+        nav:"Summary & upload",
+        title:"Summary and submit to MangoPay",
+        body:"The final step: a summary of everything provided, a last confirmation that it’s correct and matches the uploaded documents, and submission to MangoPay. Once submitted, the data is locked while verification runs — so this is the last chance to change anything."
+      }
+    ]
+  }
+};
+
+function buildCallouts(s){
+  let html="";
+  if(s.de){ html+=`<div class="callout callout--de"><span class="lab">German customisation</span><p>${s.de}</p></div>`; }
+  if(s.deValue){ html+=`<div class="callout callout--de"><span class="lab">Why it matters</span><p>${s.deValue}</p></div>`; }
+  if(s.ai){ html+=`<div class="callout callout--ai"><span class="lab">AI document check</span><p>${s.ai}</p></div>`; }
+  if(s.value){ html+=`<div class="callout callout--de"><span class="lab">Value</span><p>${s.value}</p></div>`; }
+  return html;
+}
+
+function render(flowKey){
+  const flow=FLOWS[flowKey];
+  const stepsEl=document.getElementById("steps-"+flowKey);
+  const navEl=document.getElementById("nav-"+flowKey);
+  if(stepsEl.dataset.built) return;
+  const n=flow.steps.length;
+  stepsEl.innerHTML=flow.steps.map((s,i)=>`
+    <article class="step" id="${flowKey}-${i}">
+      <div class="shot${i===0?' shot--hinted':''}" data-lb="${flowKey}" data-idx="${i}">
+        <img loading="lazy" src="${s.img}" alt="${s.title}">
+        <span class="zoom-hint">⤢ Click to enlarge</span>
+      </div>
+      <div class="copy">
+        <div class="step-num">Step ${i+1} / ${n}</div>
+        <h3>${s.title}</h3>
+        <p>${s.body}</p>
+        ${buildCallouts(s)}
+      </div>
+    </article>`).join("");
+  navEl.innerHTML=flow.steps.map((s,i)=>`
+    <li><a href="#${flowKey}-${i}" data-target="${flowKey}-${i}">${s.nav}</a></li>`).join("");
+  stepsEl.dataset.built="1";
+}
+
+let observer=null;
+function setupSpy(flowKey){
+  if(observer) observer.disconnect();
+  const navLinks=[...document.querySelectorAll(`#nav-${flowKey} a`)];
+  const map={};navLinks.forEach(a=>map[a.dataset.target]=a);
+  observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.remove("current"));
+        const a=map[e.target.id];if(a)a.classList.add("current");
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px",threshold:0});
+  document.querySelectorAll(`#steps-${flowKey} .step`).forEach(el=>observer.observe(el));
+}
+
+function showFlow(flowKey){
+  render(flowKey);
+  document.getElementById("chooser").style.display="none";
+  document.getElementById("tabs").classList.remove("hidden");
+  document.querySelectorAll(".flow").forEach(f=>f.classList.toggle("active",f.dataset.flow===flowKey));
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.flow===flowKey));
+  setupSpy(flowKey);
+  window.scrollTo({top:0,behavior:"auto"});
+  history.replaceState(null,"","#"+flowKey);
+}
+
+function showChooser(){
+  document.getElementById("chooser").style.display="";
+  document.getElementById("tabs").classList.add("hidden");
+  document.querySelectorAll(".flow").forEach(f=>f.classList.remove("active"));
+  if(observer)observer.disconnect();
+  window.scrollTo({top:0,behavior:"auto"});
+  history.replaceState(null,"","#");
+}
+
+document.querySelectorAll("[data-flow]").forEach(el=>{
+  if(el.classList.contains("flow"))return;
+  el.addEventListener("click",()=>showFlow(el.dataset.flow));
+});
+document.querySelectorAll("[data-back]").forEach(el=>el.addEventListener("click",showChooser));
+
+/* ---------- Lightbox ---------- */
+const lb=document.getElementById("lb");
+let lbFlow=null, lbIdx=0;
+function lbCaption(s){ return s.value || s.deValue || s.ai || s.body || ""; }
+function renderLb(){
+  const steps=FLOWS[lbFlow].steps, s=steps[lbIdx], n=steps.length;
+  const img=document.getElementById("lb-img");
+  img.src=s.img; img.alt=s.title;
+  document.getElementById("lb-count").textContent=FLOWS[lbFlow].navLabel;
+  document.getElementById("lb-step").textContent=`Step ${lbIdx+1} / ${n}`;
+  document.getElementById("lb-title").innerHTML=s.title;
+  document.getElementById("lb-text").innerHTML=lbCaption(s);
+}
+function openLb(flowKey,idx){ lbFlow=flowKey; lbIdx=idx; renderLb(); lb.classList.add("open"); document.body.style.overflow="hidden"; }
+function closeLb(){ lb.classList.remove("open"); document.body.style.overflow=""; }
+function lbStep(d){ const n=FLOWS[lbFlow].steps.length; lbIdx=(lbIdx+d+n)%n; renderLb(); }
+
+document.addEventListener("click",e=>{
+  const shot=e.target.closest(".shot");
+  if(shot && shot.dataset.lb){ openLb(shot.dataset.lb, +shot.dataset.idx); }
+});
+document.getElementById("lb-close").addEventListener("click",closeLb);
+document.getElementById("lb-prev").addEventListener("click",e=>{e.stopPropagation();lbStep(-1);});
+document.getElementById("lb-next").addEventListener("click",e=>{e.stopPropagation();lbStep(1);});
+lb.addEventListener("click",e=>{ if(e.target===lb || e.target.classList.contains("lb-stage")) closeLb(); });
+document.addEventListener("keydown",e=>{
+  if(!lb.classList.contains("open")) return;
+  if(e.key==="Escape") closeLb();
+  else if(e.key==="ArrowRight") lbStep(1);
+  else if(e.key==="ArrowLeft") lbStep(-1);
+});
+
+// deep-link support
+const init=location.hash.replace("#","");
+if(init==="business"||init==="soletrader")showFlow(init);
+</script>
+</body>
+</html>
