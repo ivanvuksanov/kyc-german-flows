@@ -40,7 +40,8 @@
     max-width:var(--maxw);margin:0 auto;padding:14px 24px;
     display:flex;align-items:center;gap:20px;flex-wrap:wrap;
   }
-  .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.2px;font-size:15px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.2px;font-size:15px;cursor:pointer}
+  .brand:hover{opacity:.75}
   .brand .dot{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#4f46e5,#7c3aed);
     display:grid;place-items:center;color:#fff;font-size:13px}
   .tabs{display:flex;gap:8px;margin-left:auto}
@@ -173,7 +174,7 @@
 
 <header class="top">
   <div class="top-inner">
-    <div class="brand"><span class="dot">V</span> KYC Verification · German entities</div>
+    <div class="brand" id="brandHome" title="Back to start"><span class="dot">V</span> KYC Verification · German entities</div>
     <div class="tabs hidden" id="tabs">
       <button class="tab" data-flow="soletrader">Sole trader / freelancer</button>
       <button class="tab" data-flow="business">German business</button>
@@ -458,6 +459,7 @@ document.querySelectorAll("[data-flow]").forEach(el=>{
   el.addEventListener("click",()=>showFlow(el.dataset.flow));
 });
 document.querySelectorAll("[data-back]").forEach(el=>el.addEventListener("click",showChooser));
+document.getElementById("brandHome").addEventListener("click",showChooser);
 
 /* ---------- Lightbox ---------- */
 const lb=document.getElementById("lb");
